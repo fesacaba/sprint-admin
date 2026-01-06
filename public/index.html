@@ -1,107 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sprint Capacity - Metas</title>
-    <link rel="stylesheet" href="css/Sprint_Capacity.css">
+    <title>Portal de Ferramentas - Orchestrator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/orchestrator.css">
 </head>
+
 <body>
-    <!-- Card Informações da Sprint -->
-    <div class="card" id="informacoesSprintCard">
-        <h2>Informações da Sprint</h2>
-        <div class="informacoes-sprint-flex">
-            <!-- Primeiro card interno -->
-            <div class="informacoes-sprint-periodo">
-                <label for="feriadoData">Periodo</label>
-                <input type="text" id="sprintNome" placeholder="Nome da Sprint" />
-                <input type="date" id="sprintInicio" />
-                <input type="date" id="sprintFim" />
-                <button class="btn-adicionar-sprint" onclick="addSprintInfo()">Adicionar</button>
-                <div id="sprintResumo"></div>
-            </div>
-            <!-- Segundo card interno: Feriados -->
-            <div class="informacoes-sprint-feriado">
-                <label for="feriadoData">Feriado</label>
-                <input type="date" id="feriadoData" />
-                <button class="btn-adicionar-feriado" onclick="addFeriado()">Adicionar Feriado</button>
-                <div id="feriadosLista"></div>
-            </div>
-            <!-- Novo card interno: Janelas de Implantação (GMUD) -->
-            <div class="informacoes-sprint-feriado">
-                <label for="gmudData">GMUD - Sem disponibilidade  </label>
-                <input type="date" id="gmudData" />
-                <button class="btn-adicionar-gmud" onclick="addGmud()">Adicionar Janela</button>
-                <div id="gmudLista"></div>
-            </div>
-        </div>
+
+    <header>
+        <h1>Portal de Ferramentas</h1>
+        <p class="subtitle">Selecione uma ferramenta ppara continuar</p>
+    </header>
+
+    <div class="grid-container">
+        <!-- Card 1: Sprint Admin -->
+        <a href="sprint-admin.html" class="card">
+            <div class="card-icon">🚀</div>
+            <h2>Sprint Admin</h2>
+            <p>Gerencie capacidades, feriados, metas e integrantes da sua Sprint de forma ágil e visual.</p>
+        </a>
+
+        <!-- Card 2: Prototipação -->
+        <a href="prototyping.html" class="card">
+            <div class="card-icon">🎨</div>
+            <h2>Prototipação</h2>
+            <p>Crie e visualize protótipos de interfaces de forma rápida e intuitiva.</p>
+        </a>
     </div>
 
-    <div class="card" id="cardCalendarioSprint" style="margin-top: 18px;">
-        <h2>Calendário da Sprint</h2>
-        <div id="calendarioSprint"></div>
-    </div>
-
-    <div class="cards-menores-flex-row">
-        <!-- Card de Sumarização do Calendário da Sprint -->
-
-        <div class="cardMenor" id="integrantesCard">
-            <h2>Integrantes da Sprint</h2>
-            <form id="integranteForm" onsubmit="addIntegrante(); return false;">
-                <input type="text" id="integranteNome" placeholder="Nome do colaborador" required />
-                <select id="integranteFuncao" required>
-                    <option value="">Selecione a função</option>
-                    <option value="Desenvolvedor Front">Desenvolvedor Front</option>
-                    <option value="Desenvolvedor Back">Desenvolvedor Back</option>
-                    <option value="QA">QA</option>
-                </select>
-                <button type="submit">Adicionar</button>
-            </form>
-            <div class="meta-list" id="integrantesList"></div>
-        </div>
-        <div class="cardMenor" id="metasCard">
-            <h2>Metas da Sprint</h2>
-            <form id="metaForm" onsubmit="addMeta(); return false;">
-                <input type="text" id="metaInput" placeholder="Meta" required />
-                <select id="metaRespInput" required  >
-                    <option value="">Responsável</option>
-                </select>
-                <button type="submit">Adicionar</button>
-            </form>
-            <div class="meta-list" id="metasList"></div>
-        </div>
-    </div>
-
-    <div class="card" id="capacityCard">
-        <h2>Capacity</h2>
-        <div id="capacityTableContainer"></div>
-        <div class="capacity-actions">
-            <button onclick="addCapacityRow()">Adicionar Linha</button>
-            <button onclick="addCapacityCol()">Adicionar Coluna</button>
-            <button onclick="removeCapacityCol()">Excluir Última Coluna</button>
-        </div>
-    </div>
-    <div class="card" id="sumarizadorCard">
-        <h2>Sumarizador de Capacity</h2>
-        <div id="sumarizadorTableContainer"></div>
-    </div>
-    <div class="card" id="atividadesCard">
-        <h2>Atividades da Sprint</h2>
-        <form id="atividadeForm" onsubmit="addAtividade(); return false;">
-            <input type="text" id="atividadeJira" placeholder="Link do Jira" required />
-            <select id="atividadeResp" required>
-                <option value="">Responsável</option>
-            </select>
-            <input type="number" id="atividadeEstimativa" placeholder="Estimativa (h)" min="0" step="0.5" required />
-            <input type="text" id="atividadeObs" placeholder="Observação" />
-            <button type="submit">Adicionar</button>
-        </form>
-        <div id="atividadesTableContainer"></div>
-    </div>
-    <div class="export-json-container" >
-        <button class="btn-export" onclick="exportJSON()">Exportar em JSON</button>
-        <button class="btn-export btn-red" onclick="clearLocalStorageAndReload()">Limpar cache</button>
-    </div>
-    <script src="Sprint_Capacity.js"></script>
 </body>
+
 </html>

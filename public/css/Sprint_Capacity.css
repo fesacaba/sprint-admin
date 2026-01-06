@@ -1,414 +1,378 @@
-/* Sprint_Capacity.css - Alteração solicitada "hora e dia" - Remoção do CSS inline do HTML */
+/* Sprint_Capacity.css - Premium Light Theme Standardized */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@500;600;700&display=swap');
+
+:root {
+    /* Palette - Light Theme adapted from Orchestrator */
+    --bg-page: #f8fafc;
+    /* Slate 50 */
+    --card-bg: #ffffff;
+    --text-primary: #1e293b;
+    /* Slate 800 */
+    --text-secondary: #64748b;
+    /* Slate 500 */
+    --border-color: #e2e8f0;
+    /* Slate 200 */
+
+    /* Brand/Accent Colors */
+    --primary-color: #0f172a;
+    /* Slate 900 */
+    --primary-hover: #334155;
+    /* Slate 700 */
+    --accent-color: #0ea5e9;
+    /* Sky 500 */
+
+    /* Semantic Colors */
+    --danger-color: #ef4444;
+    --danger-hover: #dc2626;
+    --success-bg: #dcfce7;
+    --success-text: #15803d;
+    --warning-bg: #fef9c3;
+    --warning-text: #b45309;
+    /* Amber 700 */
+    --danger-bg: #fee2e2;
+    --danger-text: #b91c1c;
+
+    /* Spacing & Layout */
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    /* Fonts */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+
 body {
-    background: #f7f7f7;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg-page);
+    font-family: var(--font-body);
+    color: var(--text-primary);
     margin: 0;
     padding: 0;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: 60px;
 }
+
+/* Headings */
+h1,
+h2,
+h3 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-top: 0;
+    letter-spacing: -0.01em;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+/* Base Card Style */
+.card,
+.cardMenor,
+#informacoesSprintCard,
+.informacoes-sprint-periodo,
+.informacoes-sprint-feriado,
+.informacoes-sprint-sumarizacao {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 24px;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.card:hover,
+.cardMenor:hover {
+    box-shadow: var(--shadow-md);
+}
+
+/* Layout overrides for specific IDs to maintain grid/flow */
+#informacoesSprintCard {
+    margin: 32px 100px 24px 100px;
+    padding: 32px;
+}
+
 .card {
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-    margin: 32px 100px 25px 100px;
-    padding: 28px 36px;
+    margin: 24px 100px;
     max-width: 1800px;
 }
 
-.cardMenor {
-    flex: 1 1 0;
-    min-width: 610px;
-    max-width: 100%;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-    padding: 24px 24px 18px 24px;
-    margin: 0;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-}
-h2 {
-    margin-top: 0;
-    color: #2d3a4a;
-    font-size: 2rem;
-    font-weight: 600;
-}
-#metaForm, #integranteForm {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 18px;
-}
-#metaForm input, #integranteForm input, #integranteForm select {
-    padding: 10px;
-    border: 1px solid #d0d0d0;
-    border-radius: 4px;
-    font-size: 16px;
-    width: 100%;
-}
-#metaForm button, #integranteForm button {
-    background: #2d3a4a;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    transition: background 0.2s;
-}
-#metaForm button:hover, #integranteForm button:hover {
-    background: #1a2533;
-}
-.meta-list {
-    margin-top: 8px;
-}
-.meta-item {
-    background: #f3f6fa;
-    border-radius: 8px;
-    padding: 12px 18px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
-}
-.meta-label {
-    font-weight: 500;
-    color: #2d3a4a;
-    font-size: 1.1rem;
-}
-.meta-resp {
-    color: #4a7ebc;
-    font-size: 1rem;
-    margin-left: 18px;
-}
-.meta-remove {
-    background: #e74c3c;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 4px 12px;
-    cursor: pointer;
-    font-size: 0.95rem;
-    margin-left: 18px;
-    transition: background 0.2s;
-}
-.meta-remove:hover {
-    background: #c0392b;
-}
-.card#capacityCard {
-    max-width: 1800px;
-    min-width: 320px;
-    width: auto;
-}
-#capacityTableContainer {
-    width: 100%;
-    overflow-x: auto;
-}
-#capacityTableContainer table {
-    min-width: 600px;
-    width: auto;
-    border-collapse: collapse;
-    margin-top: 16px;
-}
-#capacityTableContainer th, #capacityTableContainer td {
-    border: 1px solid #e0e0e0;
-    padding: 8px;
-    text-align: center;
-    white-space: nowrap;
-}
-#capacityTableContainer th {
-    background: #e9eef2;
-}
-#capacityTableContainer td input {
-    width: 60px;
-    text-align: center;
-    padding: 4px;
-    border: 1px solid #d0d0d0;
-    border-radius: 4px;
-    font-size: 15px;
-}
-#capacityTableContainer td input.bg-verde {
-    background: #eafbe7;
-    color: #27ae60;
-    font-weight: bold;
-}
-#capacityTableContainer td input.bg-vermelho {
-    background: #fdeaea;
-    color: #e74c3c;
-    font-weight: bold;
-}
-#capacityTableContainer td button {
-    background: #2d3a4a;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 18px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
-    margin: 0 4px;
-    transition: background 0.2s;
-}
-#capacityTableContainer td button:hover {
-    background: #1a2533;
-}
-.capacity-actions {
-    margin-top: 16px;
-    text-align: right;
-}
-.capacity-actions button {
-    background: #2d3a4a;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 8px 18px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
-    margin: 0 4px;
-    transition: background 0.2s;
-}
-.capacity-actions button:hover {
-    background: #1a2533;
-}
-.card#atividadesCard {
-    max-width: 1800px;
-    margin: 32px 100px;
-    padding: 28px 36px;
-}
-#atividadeForm {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
-}
-#atividadeForm input, #atividadeForm select {
-    padding: 10px;
-    border: 1px solid #d0d0d0;
-    border-radius: 4px;
-    font-size: 16px;
-    flex: 1;
-    min-width: 120px;
-}
-#atividadeForm button {
-    background: #2d3a4a;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    transition: background 0.2s;
-    flex: 0 0 auto;
-}
-#atividadeForm button:hover {
-    background: #1a2533;
-}
-#atividadesTableContainer {
-    width: 100%;
-    overflow-x: auto;
-}
-#atividadesTableContainer table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 16px;
-}
-#atividadesTableContainer th, #atividadesTableContainer td {
-    border: 1px solid #e0e0e0;
-    padding: 8px;
-    text-align: center;
-    white-space: nowrap;
-}
-#atividadesTableContainer th {
-    background: #e9eef2;
-}
-.horas-positivas {
-    color: #27ae60;
-    font-weight: bold;
-}
-.horas-negativas {
-    color: #e74c3c;
-    font-weight: bold;
-}
-#informacoesSprintCard {
-    margin: 32px 100px 25px 100px;
-    padding: 32px;
-    border-radius: 16px;
-    background: #fafbfc;
-    box-shadow: 0 2px 8px #e0e0e0;
-}
-#informacoesSprintCard h2 {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 18px;
-    color: #2d3a4a;
-}
+/* Flex Container for Info Cards */
 .informacoes-sprint-flex {
     display: flex;
-    gap: 32px;
+    gap: 24px;
     flex-wrap: wrap;
 }
+
+.informacoes-sprint-periodo,
+.informacoes-sprint-feriado {
+    box-shadow: none;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.informacoes-sprint-periodo button,
+.informacoes-sprint-feriado button {
+    align-self: flex-start;
+    margin-top: 8px;
+}
+
 .informacoes-sprint-periodo {
     flex: 2;
     min-width: 340px;
-    background: #fff;
-    padding: 24px 18px 18px 18px;
-    border-radius: 12px;
-    box-shadow: 0 1px 4px #e0e0e0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
 }
-.informacoes-sprint-periodo label {
-    font-weight: 500;
-    margin-bottom: 4px;
-}
-.informacoes-sprint-periodo input {
-    padding: 10px;
-    border: 1px solid #d0d0d0;
-    border-radius: 4px;
-    font-size: 16px;
-}
-.btn-adicionar-sprint {
-    background: #2d3a4a;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 24px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-left: auto;
-    display: block;
-}
+
 .informacoes-sprint-feriado {
     flex: 1;
     min-width: 260px;
-    background: #fff;
-    padding: 24px 18px 18px 18px;
-    border-radius: 12px;
-    box-shadow: 0 1px 4px #e0e0e0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
 }
-.informacoes-sprint-feriado label {
-    font-weight: 500;
-    margin-bottom: 4px;
-}
-.informacoes-sprint-feriado input {
-    padding: 10px;
-    border: 1px solid #d0d0d0;
-    border-radius: 4px;
-    font-size: 16px;
-}
-.btn-adicionar-feriado {
-    background: #2d3a4a;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 24px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-left: auto;
-    display: block;
-}
-.btn-adicionar-gmud {
-    background: #2d3a4a;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 10px 24px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    margin-left: auto;
-    display: block;
-}
-.btn-adicionar-gmud:hover {
-    background: #1a2533;
-}
-.informacoes-sprint-sumarizacao {
-    margin-top: 32px;
-    background: #fff;
-    padding: 24px 18px 18px 18px;
-    border-radius: 12px;
-    box-shadow: 0 1px 4px #e0e0e0;
-}
-.informacoes-sprint-sumarizacao h3 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 12px;
-    color: #2d3a4a;
-}
-.export-json-container {
-    text-align: right;
-    margin-top: 32px;
-    margin-bottom: 50px;
-    margin-right: 120px;
-}
-.export-json-container button {
-    background: gray;
-    color: #fff;
-    border: none;
-    border-radius: 6px;
-    padding: 12px 32px;
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-}
-.btn-export {
-    min-width: 180px;
-    padding: 10px 24px;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    background: #2d7be5;
-    color: #fff;
-    cursor: pointer;
-    font-weight: 500;
-    transition: background 0.2s;
+
+/* Inputs & Selects Standardized */
+input[type="text"],
+input[type="date"],
+input[type="number"],
+select {
+    appearance: none;
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 0.625rem 1rem;
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    color: var(--text-primary);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
     box-sizing: border-box;
 }
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+}
+
+label {
+    display: block;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+/* Buttons Standardized */
+button,
+.btn-export,
+.btn-back {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: var(--radius-md);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+/* Primary Button Style (Default for 'Adicionar' etc) */
+button {
+    background-color: var(--primary-color);
+    color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+/* Specific Action Buttons */
+.btn-export {
+    background-color: var(--accent-color);
+    color: #fff;
+}
+
 .btn-export:hover {
-    background: #1a5bb8;
+    background-color: #0284c7;
+    /* Sky 600 */
 }
-.btn-export.btn-red {
-    background: #e74c3c;
+
+.btn-export.btn-red,
+.meta-remove,
+button[onclick*="remove"],
+button[onclick*="Excluir"] {
+    background-color: var(--danger-color);
+    color: #fff;
 }
-.btn-export.btn-red:hover {
-    background: #c0392b;
+
+.btn-export.btn-red:hover,
+.meta-remove:hover,
+button[onclick*="remove"]:hover,
+button[onclick*="Excluir"]:hover {
+    background-color: var(--danger-hover);
 }
+
+/* Back Button */
+.admin-header {
+    margin: 32px 100px 0 100px;
+    display: flex;
+    align-items: center;
+}
+
+.btn-back {
+    background-color: #fff;
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-back:hover {
+    background-color: #f1f5f9;
+    color: var(--text-primary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+th {
+    background-color: #f1f5f9;
+    /* Slate 100 */
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* Meta List Items */
+.meta-item {
+    background: #f8fafc;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.meta-label {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.meta-resp {
+    color: var(--accent-color);
+    font-weight: 500;
+    font-size: 0.9rem;
+    background: rgba(14, 165, 233, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* Capacity/Status Colors in Tables */
+.bg-verde {
+    background-color: var(--success-bg) !important;
+    color: var(--success-text) !important;
+    border-color: transparent !important;
+}
+
+.bg-vermelho {
+    background-color: var(--danger-bg) !important;
+    color: var(--danger-text) !important;
+    border-color: transparent !important;
+}
+
+.horas-positivas {
+    color: var(--success-text);
+}
+
+.horas-negativas {
+    color: var(--danger-text);
+}
+
+/* Subcards / Flex Row */
 .cards-menores-flex-row {
     display: flex;
-    flex-wrap: nowrap;
-    gap: 20px;
-    width: 100%;
-    margin-bottom: 24px;
+    gap: 24px;
+    margin: 0 100px 24px 100px;
     overflow-x: auto;
-    padding-left: 100px;
-    padding-right: 120px;
-    box-sizing: border-box;
 }
-.cards-menores-flex-row > .cardMenor {
-    width: 100%;
+
+.cardMenor {
+    flex: 1;
+    min-width: 400px;
+    margin: 0;
 }
-@media (min-width: 900px) {
-    .cards-menores-flex-row > .cardMenor {
-    }
+
+/* Forms Layout inside cards */
+#metaForm,
+#integranteForm,
+#atividadeForm {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 24px;
+    align-items: center;
 }
-@media (max-width: 900px) {
+
+.export-json-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin: 32px 100px 50px 100px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+
+    #informacoesSprintCard,
+    .card,
+    .admin-header,
     .cards-menores-flex-row {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        padding-left: 12px;
-        padding-right: 12px;
+        margin-left: 20px;
+        margin-right: 20px;
     }
+
+    .cards-menores-flex-row {
+        flex-direction: column;
+    }
+
     .cardMenor {
-        min-width: 400px;
-        width: 50%;
+        width: 100%;
+        min-width: auto;
     }
 }

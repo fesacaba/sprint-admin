@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extrato</title>
+  <link rel="stylesheet" href="style/style.css">
+  <!-- Ícones via Unicode ou SVG inline -->
+</head>
+
+<body>
+  <div class="central-container">
+    <div class="header">
+      <a href="../prototyping.html" class="back" style="text-decoration:none; color:inherit;">&#8592;</a>
+      <span class="header-title">Extrato</span>
+      <span class="search">&#128269;</span>
+    </div>
+    <div class="saldo">
+      <div class="saldo-label">Saldo disponível em conta:</div>
+      <div class="saldo-valor">R$ 14,05</div>
+    </div>
+    <div class="transferencias">
+      <div class="transferencia" onclick="openModal('1')">
+        <div class="trans-icon">
+          <img src="icons/icons8-foto-100.png" alt="Ícone da transação" style="width:32px;height:32px;">
+        </div>
+        <div class="trans-info">
+          <div class="trans-tipo">Transferência enviada - Pix</div>
+          <div class="trans-nome">Anna Beatriz Brum Gonçalves De Sá</div>
+        </div>
+        <div class="trans-data-valor">
+          <span class="trans-data">24 Nov</span>
+          <span class="trans-time">14:32</span>
+          <span class="trans-valor">R$ 1,00</span>
+        </div>
+        <span class="trans-action">
+          <img src="icons/icons8-informações.gif" alt="Informações" style="width:24px;height:24px;">
+        </span>
+      </div>
+      <div class="transferencia" onclick="openModal('2')">
+        <div class="trans-icon">
+          <img src="icons/icons8-foto-100.png" alt="Ícone da transação" style="width:32px;height:32px;">
+        </div>
+        <div class="trans-info">
+          <div class="trans-tipo">Transferência enviada - Pix</div>
+          <div class="trans-nome">Anna Beatriz Brum Gonçalves De Sá</div>
+        </div>
+        <div class="trans-data-valor">
+          <span class="trans-data">24 Nov</span>
+          <span class="trans-time">09:05</span>
+          <span class="trans-valor">R$ 10,00</span>
+        </div>
+        <span class="trans-action">
+          <img src="icons/icons8-informações.gif" alt="Informações" style="width:24px;height:24px;">
+        </span>
+      </div>
+      <!-- New transaction: recusado no passo 2 (segundo aprovador tem 1 hora para aprovar) -->
+      <div class="transferencia" onclick="openModal('3')">
+        <div class="trans-icon">
+          <img src="icons/icons8-foto-100.png" alt="Ícone da transação" style="width:32px;height:32px;">
+        </div>
+        <div class="trans-info">
+          <div class="trans-tipo">Transferência enviada - Pix</div>
+          <div class="trans-nome">Empresa XYZ Ltda.</div>
+        </div>
+        <div class="trans-data-valor">
+          <span class="trans-data">24 Nov</span>
+          <span class="trans-time">11:20</span>
+          <span class="trans-valor">R$ 200,00</span>
+        </div>
+        <span class="trans-action">
+          <img src="icons/icons8-informações.gif" alt="Informações" style="width:24px;height:24px;">
+        </span>
+      </div>
+      <!-- New transaction: instituição não autorizada pelo Banco Central -->
+      <div class="transferencia" onclick="openModal('4')">
+        <div class="trans-icon">
+          <img src="icons/icons8-foto-100.png" alt="Ícone da transação" style="width:32px;height:32px;">
+        </div>
+        <div class="trans-info">
+          <div class="trans-tipo">Transferência enviada - Pix</div>
+          <div class="trans-nome">Instituição ABC Financeira</div>
+        </div>
+        <div class="trans-data-valor">
+          <span class="trans-data">24 Nov</span>
+          <span class="trans-time">12:45</span>
+          <span class="trans-valor">R$ 50,00</span>
+        </div>
+        <span class="trans-action">
+          <img src="icons/icons8-informações.gif" alt="Informações" style="width:24px;height:24px;">
+        </span>
+      </div>
+      <!-- New transaction: rejeitada pelo banco de destino -->
+      <div class="transferencia" onclick="openModal('5')">
+        <div class="trans-icon">
+          <img src="icons/icons8-foto-100.png" alt="Ícone da transação" style="width:32px;height:32px;">
+        </div>
+        <div class="trans-info">
+          <div class="trans-tipo">Transferência enviada - Pix</div>
+          <div class="trans-nome">Cliente Conta Destino</div>
+        </div>
+        <div class="trans-data-valor">
+          <span class="trans-data">24 Nov</span>
+          <span class="trans-time">13:30</span>
+          <span class="trans-valor">R$ 75,00</span>
+        </div>
+        <span class="trans-action">
+          <img src="icons/icons8-informações.gif" alt="Informações" style="width:24px;height:24px;">
+        </span>
+      </div>
+      <!-- New transaction: aguardando aprovação dentro do prazo -->
+      <div class="transferencia" onclick="openModal('6')">
+        <div class="trans-icon">
+          <img src="icons/icons8-foto-100.png" alt="Ícone da transação" style="width:32px;height:32px;">
+        </div>
+        <div class="trans-info">
+          <div class="trans-tipo">Transferência enviada - Pix</div>
+          <div class="trans-nome">Empresa Beta Ltda.</div>
+        </div>
+        <div class="trans-data-valor">
+          <span class="trans-data">24 Nov</span>
+          <span class="trans-time">15:10</span>
+          <span class="trans-valor">R$ 120,00</span>
+        </div>
+        <span class="trans-action">
+          <img src="icons/icons8-informações.gif" alt="Informações" style="width:24px;height:24px;">
+        </span>
+      </div>
+    </div>
+    <!-- Modal será incluído via JavaScript -->
+    <!-- Modal importado de modal.html -->
+    <div id="modal-overlay" class="modal-overlay" onclick="closeModal()"></div>
+    <div id="modal-bottom" class="modal-bottom">
+      <div class="modal-content">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <h2 id="modal-title">Detalhes da Transação</h2>
+        <div id="modal-details">
+          <!-- Conteúdo dinâmico da transação -->
+        </div>
+        <button id="report-btn" class="report-btn" style="display:none; margin-top:18px; width:100%;">Reportar
+          problema</button>
+        <!-- Modal de reportar problema (apenas textarea e botões) -->
+        <div id="report-modal" class="modal-overlay" style="display:none; z-index:200;">
+          <div class="report-modal-content">
+            <span class="modal-close" onclick="closeReportModal()">&times;</span>
+            <h2 style="margin-top:0;">Reportar problema</h2>
+            <label for="report-textarea" style="font-size:15px; color:#222;">Descreva o problema encontrado:</label>
+            <textarea id="report-textarea" rows="5"
+              style="width:100%;margin:12px 0 18px 0;resize:vertical;min-height:80px;max-height:180px;font-size:15px;padding:10px;border-radius:8px;border:1px solid #e5e7eb;"></textarea>
+            <button onclick="enviarReport()"
+              style="width:100%;padding:10px 0;border-radius:8px;background:#2563eb;color:#fff;font-weight:600;border:none;">Enviar</button>
+          </div>
+        </div>
+        <!-- Modal de confirmação de envio -->
+        <div id="report-confirm-modal" class="modal-overlay" style="display:none; z-index:201;">
+          <div class="report-modal-content">
+            <span class="modal-close" onclick="closeReportConfirmModal()">&times;</span>
+            <h2 style="margin-top:0;">Problema enviado</h2>
+            <div style="margin:18px 0 24px 0; color:#222; font-size:15px;">Seu relato foi enviado com sucesso. Obrigado
+              pelo feedback!</div>
+            <button onclick="closeReportConfirmModal()"
+              style="width:100%;padding:10px 0;border-radius:8px;background:#2563eb;color:#fff;font-weight:600;border:none;">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Map of example transaction UUIDs (one per transaction id)
+    const txUUIDs = {
+      '1': '3f1e8a2a-1a6b-4c3d-9f2a-0a1b2c3d4e5f',
+      '2': '7b2c9d3e-2b7c-4d8a-8b3c-1f2e3d4c5b6a',
+      '3': 'e1a2b3c4-5d6e-7f81-9a0b-1c2d3e4f5a6b',
+      '4': 'a9b8c7d6-5e4f-3a2b-1c0d-9e8f7a6b5c4d',
+      '5': 'd4e5f6a7-8b9c-0d1e-2f3a-4b5c6d7e8f90',
+      '6': 'b1c2d3e4-f5a6-7b8c-9d0e-1f2a3b4c5d6e'
+    };
+
+    // Copy helper (uses Clipboard API when available)
+    window.copyTxId = function (uuid, btn) {
+      if (!uuid) return;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(uuid).then(() => {
+          if (btn) {
+            btn.textContent = 'Copiado!';
+            btn.setAttribute('aria-label', 'ID copiado');
+            setTimeout(() => { btn.textContent = 'Copiar'; btn.setAttribute('aria-label', 'Copiar ID da transação'); }, 1500);
+          }
+        }).catch(() => {
+          // fallback
+          const ta = document.createElement('textarea');
+          ta.value = uuid;
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); if (btn) { btn.textContent = 'Copiado!'; setTimeout(() => btn.textContent = 'Copiar', 1500); } } catch (e) { console.warn('copy failed', e); }
+          document.body.removeChild(ta);
+        });
+      } else {
+        // legacy fallback
+        const ta = document.createElement('textarea');
+        ta.value = uuid;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); if (btn) { btn.textContent = 'Copiado!'; setTimeout(() => btn.textContent = 'Copiar', 1500); } } catch (e) { console.warn('copy failed', e); }
+        document.body.removeChild(ta);
+      }
+    };
+
+    function openModal(id) {
+      document.getElementById('modal-overlay').style.display = 'block';
+      document.getElementById('modal-bottom').style.display = 'block';
+
+      const uuid = txUUIDs[id] || '';
+
+      // Build timeline HTML helper
+      function timelineStep(title, subtitle, status, extra, explanation) {
+        // status: 'completed', 'pending', 'failed'
+        const statusClass = status === 'completed' ? 'step-completed' : (status === 'failed' ? 'step-failed' : 'step-pending');
+        const extraHtml = extra ? `<div class="step-extra">${extra}</div>` : '';
+        const subtitleHtml = subtitle ? `<div class="step-sub">${subtitle}</div>` : '';
+        const explainHtml = explanation ? `\n            <button type="button" class="step-info" aria-expanded="false" onclick="toggleStepInfo(this)">ℹ</button>\n            <div class="step-explain" style="display:none">${explanation}</div>` : '';
+        return `
+      <li class="step ${statusClass}">
+        <div class="step-marker"></div>
+        <div class="step-body">
+          <div class="step-title">${title}</div>
+          ${subtitleHtml}
+          ${extraHtml}
+          ${explainHtml}
+        </div>
+      </li>`;
+      }
+
+      // global toggle function for info buttons
+      window.toggleStepInfo = function (btn) {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+        const explain = btn.nextElementSibling;
+        if (explain) explain.style.display = expanded ? 'none' : 'block';
+      }
+
+      let details;
+      if (id === '1') {
+        // Example: fully approved transaction
+        details = `
+      <div class="tx-summary">
+        <p><strong>Nome:</strong> Anna Beatriz Brum Gonçalves De Sá</p>
+        <p><strong>Tipo:</strong> Transferência enviada - Pix</p>
+        <p><strong>Data:</strong> 24 Nov &middot; <span class="tx-hour">14:32</span></p>
+        <p><strong>ID Transação:</strong> <span class="tx-id">${uuid}</span> <button class="copy-btn" onclick="copyTxId('${uuid}', this)" aria-label="Copiar ID da transação">Copiar</button></p>
+        <p><strong>Valor:</strong> R$ 1,00</p>
+      </div>
+      <h3 class="timeline-title">Status da transação</h3>
+      <ol class="timeline">
+        ${timelineStep('Validar instituição de destino', 'Banco XYZ', 'completed', '', 'Verificamos se o ISPB (identificador da instituição) de destino está regular e autorizado a operar no sistema do Banco Central.')}
+        ${timelineStep('Validar chave de destino', '', 'completed', '', 'Validamos se a chave de destino possui apontamentos de fraude; tanto a chave quanto a pessoa vinculada são verificados.')}
+        ${timelineStep('Aguardar aprovação da transação', '2/2 aprovadores', 'completed', '', 'Esse passo depende do cliente solicitar a segunda aprovação na sua conta; em contas PJ pode ser necessário 2 aprovadores.')}
+        ${timelineStep('Validação antifraude', '', 'completed', '', 'Motores de antifraude estão avaliando a transação com regras, limites e comportamentos para detectar risco.')}
+        ${timelineStep('Enviar para o Banco Central', '', 'completed', '', 'A transação foi enviada ao Banco Central e aguarda processamento e confirmação pelo banco de destino.')}
+        ${timelineStep('Resultado final', 'Aprovado', 'completed')}
+      </ol>`;
+      } else if (id === '2') {
+        // Example: rejected transaction (show reason)
+        details = `
+      <div class="tx-summary">
+        <p><strong>Nome:</strong> Anna Beatriz Brum Gonçalves De Sá</p>
+        <p><strong>Tipo:</strong> Transferência enviada - Pix</p>
+        <p><strong>Data:</strong> 24 Nov &middot; <span class="tx-hour">09:05</span></p>
+        <p><strong>ID Transação:</strong> <span class="tx-id">${uuid}</span> <button class="copy-btn" onclick="copyTxId('${uuid}', this)" aria-label="Copiar ID da transação">Copiar</button></p>
+        <p><strong>Valor:</strong> R$ 10,00</p>
+      </div>
+      <h3 class="timeline-title">Status da transação</h3>
+      <ol class="timeline">
+        ${timelineStep('Validar instituição de destino', 'Banco XYZ', 'completed', '', 'Verificamos se o ISPB (identificador da instituição) de destino está regular e autorizado a operar no sistema do Banco Central.')}
+        ${timelineStep('Validar chave de destino', '', 'completed', '', 'Validamos se a chave de destino possui apontamentos de fraude; tanto a chave quanto a pessoa vinculada são verificados.')}
+        ${timelineStep('Aguardar aprovação da transação', '1/2 aprovadores', 'pending', '', 'Esse passo depende do cliente solicitar a segunda aprovação na sua conta; em contas PJ pode ser necessário 2 aprovadores.')}
+        ${timelineStep('Validação antifraude', '', 'pending', '', 'Motores de antifraude estão avaliando a transação com regras, limites e comportamentos para detectar risco.')}
+        ${timelineStep('Enviar para o Banco Central', '', 'pending', '', 'A transação foi enviada ao Banco Central e aguarda processamento e confirmação pelo banco de destino.')}
+        ${timelineStep('Resultado final', 'Rejeitado', 'failed', 'Motivo: Conta bloqueada')}
+      </ol>`;
+      } else if (id === '3') {
+        // New example: refused at step 2 because second approver didn't approve within 1 hour
+        details = `
+      <div class="tx-summary">
+        <p><strong>Nome:</strong> Empresa XYZ Ltda.</p>
+        <p><strong>Tipo:</strong> Transferência enviada - Pix</p>
+        <p><strong>Data:</strong> 24 Nov &middot; <span class="tx-hour">11:20</span></p>
+        <p><strong>ID Transação:</strong> <span class="tx-id">${uuid}</span> <button class="copy-btn" onclick="copyTxId('${uuid}', this)" aria-label="Copiar ID da transação">Copiar</button></p>
+        <p><strong>Valor:</strong> R$ 200,00</p>
+      </div>
+      <h3 class="timeline-title">Status da transação</h3>
+      <ol class="timeline">
+        ${timelineStep('Validar instituição de destino', 'Banco XYZ', 'completed', '', 'Verificamos se o ISPB (identificador da instituição) de destino está regular e autorizado a operar no sistema do Banco Central.')}
+        ${timelineStep('Validar chave de destino', '', 'completed', '', 'Validamos se a chave de destino possui apontamentos de fraude; tanto a chave quanto a pessoa vinculada são verificados.')}
+        ${timelineStep('Aguardar aprovação da transação', '1/2 aprovadores - segundo aprovador não aprovou dentro de 1 hora', 'failed', 'Motivo: Segundo aprovador não aprovou dentro de 1 hora', 'Esse passo depende do cliente solicitar a segunda aprovação na sua conta; o segundo aprovador tem 1 hora para aprovar.')}
+        ${timelineStep('Validação antifraude', '', 'pending', '', 'Motores de antifraude estão avaliando a transação com regras, limites e comportamentos para detectar risco.')}
+        ${timelineStep('Enviar para o Banco Central', '', 'pending', '', 'A transação foi enviada ao Banco Central e aguarda processamento e confirmação pelo banco de destino.')}
+        ${timelineStep('Resultado final', 'Rejeitado', 'failed', 'Motivo: Não houve aprovação necessária')}
+      </ol>`;
+      } else if (id === '4') {
+        // New example: institution not authorized to operate by Banco Central
+        details = `
+      <div class="tx-summary">
+        <p><strong>Nome:</strong> Instituição ABC Financeira</p>
+        <p><strong>Tipo:</strong> Transferência enviada - Pix</p>
+        <p><strong>Data:</strong> 24 Nov &middot; <span class="tx-hour">12:45</span></p>
+        <p><strong>ID Transação:</strong> <span class="tx-id">${uuid}</span> <button class="copy-btn" onclick="copyTxId('${uuid}', this)" aria-label="Copiar ID da transação">Copiar</button></p>
+        <p><strong>Valor:</strong> R$ 50,00</p>
+      </div>
+      <h3 class="timeline-title">Status da transação</h3>
+      <ol class="timeline">
+        ${timelineStep('Validar instituição de destino', 'Instituição ABC Financeira', 'failed', 'Motivo: Instituição não autorizada pelo Banco Central', 'Verificamos se o ISPB (identificador da instituição) de destino está regular e autorizado a operar no sistema do Banco Central.')}
+        ${timelineStep('Validar chave de destino', '', 'pending', '', 'Validamos se a chave de destino possui apontamentos de fraude; tanto a chave quanto a pessoa vinculada são verificados.')}
+        ${timelineStep('Aguardar aprovação da transação', '', 'pending', '', 'Esse passo depende do cliente solicitar a segunda aprovação na sua conta; em contas PJ pode ser necessário 2 aprovadores.')}
+        ${timelineStep('Validação antifraude', '', 'pending', '', 'Motores de antifraude estão avaliando a transação com regras, limites e comportamentos para detectar risco.')}
+        ${timelineStep('Enviar para o Banco Central', '', 'pending', '', 'A transação foi enviada ao Banco Central e aguarda processamento e confirmação pelo banco de destino.')}
+        ${timelineStep('Resultado final', 'Rejeitado', 'failed', 'Motivo: Instituição não autorizada')}
+      </ol>`;
+      } else if (id === '5') {
+        // New example: rejected by destination bank after processing
+        details = `
+      <div class="tx-summary">
+        <p><strong>Nome:</strong> Cliente Conta Destino</p>
+        <p><strong>Tipo:</strong> Transferência enviada - Pix</p>
+        <p><strong>Data:</strong> 24 Nov &middot; <span class="tx-hour">13:30</span></p>
+        <p><strong>ID Transação:</strong> <span class="tx-id">${uuid}</span> <button class="copy-btn" onclick="copyTxId('${uuid}', this)" aria-label="Copiar ID da transação">Copiar</button></p>
+        <p><strong>Valor:</strong> R$ 75,00</p>
+      </div>
+      <h3 class="timeline-title">Status da transação</h3>
+      <ol class="timeline">
+        ${timelineStep('Validar instituição de destino', 'Banco XYZ', 'completed', '', 'Verificamos se o ISPB (identificador da instituição) de destino está regular e autorizado a operar no sistema do Banco Central.')}
+        ${timelineStep('Validar chave de destino', '', 'completed', '', 'Validamos se a chave de destino possui apontamentos de fraude; tanto a chave quanto a pessoa vinculada são verificados.')}
+        ${timelineStep('Aguardar aprovação da transação', '2/2 aprovadores', 'completed', '', 'Esse passo depende do cliente solicitar a segunda aprovação na sua conta; em contas PJ pode ser necessário 2 aprovadores.')}
+        ${timelineStep('Validação antifraude', '', 'completed', '', 'Motores de antifraude estão avaliando a transação com regras, limites e comportamentos para detectar risco.')}
+        ${timelineStep('Enviar para o Banco Central', '', 'completed', '', 'A transação foi enviada ao Banco Central e aguarda processamento e confirmação pelo banco de destino.')}
+        ${timelineStep('Resultado final', 'Rejeitado pelo banco de destino', 'failed', 'Motivo: Rejeição pelo banco de destino')}
+      </ol>`;
+      } else if (id === '6') {
+        // New example: pending approval within 1 hour
+        details = `
+      <div class="tx-summary">
+        <p><strong>Nome:</strong> Empresa Beta Ltda.</p>
+        <p><strong>Tipo:</strong> Transferência enviada - Pix</p>
+        <p><strong>Data:</strong> 24 Nov &middot; <span class="tx-hour">15:10</span></p>
+        <p><strong>ID Transação:</strong> <span class="tx-id">${uuid}</span> <button class="copy-btn" onclick="copyTxId('${uuid}', this)" aria-label="Copiar ID da transação">Copiar</button></p>
+        <p><strong>Valor:</strong> R$ 120,00</p>
+      </div>
+      <h3 class="timeline-title">Status da transação</h3>
+      <ol class="timeline">
+        ${timelineStep('Validar instituição de destino', 'Banco XYZ', 'completed', '', 'Verificamos se o ISPB (identificador da instituição) de destino está regular e autorizado a operar no sistema do Banco Central.')}
+        ${timelineStep('Validar chave de destino', '', 'completed', '', 'Validamos se a chave de destino possui apontamentos de fraude; tanto a chave quanto a pessoa vinculada são verificados.')}
+        ${timelineStep('Aguardar aprovação da transação', '1/2 aprovadores - aguardando segundo aprovador (dentro do prazo)', 'pending', '', 'Esse passo depende do cliente solicitar a segunda aprovação na sua conta; o segundo aprovador tem até 1 hora para aprovar.')}
+        ${timelineStep('Validação antifraude', '', 'pending', '', 'Motores de antifraude estão avaliando a transação com regras, limites e comportamentos para detectar risco.')}
+        ${timelineStep('Enviar para o Banco Central', '', 'pending', '', 'A transação foi enviada ao Banco Central e aguarda processamento e confirmação pelo banco de destino.')}
+        ${timelineStep('Resultado final', 'Pendente', 'pending')}
+      </ol>`;
+      } else {
+        // Fallback
+        details = `<p>Detalhes não disponíveis.</p>`;
+      }
+
+      document.getElementById('modal-details').innerHTML = details;
+
+      // Exibe o botão de reportar problema
+      document.getElementById('report-btn').style.display = 'block';
+      document.getElementById('report-btn').onclick = function () {
+        abrirReportarProblema();
+      };
+    }
+    function closeModal() {
+      document.getElementById('modal-overlay').style.display = 'none';
+      document.getElementById('modal-bottom').style.display = 'none';
+      document.getElementById('report-btn').style.display = 'none';
+      closeReportModal();
+      closeReportConfirmModal();
+    }
+
+    // Função para abrir o modal de reportar problema
+    function abrirReportarProblema() {
+      document.getElementById('report-textarea').value = '';
+      document.getElementById('report-modal').style.display = 'flex';
+    }
+    function closeReportModal() {
+      document.getElementById('report-modal').style.display = 'none';
+    }
+    function enviarReport() {
+      // Aqui poderia ser feito o envio real para backend
+      closeReportModal();
+      document.getElementById('report-confirm-modal').style.display = 'flex';
+    }
+    function closeReportConfirmModal() {
+      document.getElementById('report-confirm-modal').style.display = 'none';
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos 2026 - Slide 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --text-color: #1f2937;
+            --bg-color: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: var(--text-color);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .slide-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .cards-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        /* Flip Card Container */
+        .flip-card {
+            background-color: transparent;
+            width: 400px;
+            height: 500px;
+            perspective: 1000px; /* Remove this if you don't want the 3D effect */
+            cursor: pointer;
+        }
+
+        /* This container is needed to position the front and back side */
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border-radius: 1rem;
+        }
+
+        /* Do an horizontal flip when you move the mouse over the flip box container */
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Position the front and back side */
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* Safari */
+            backface-visibility: hidden;
+            border-radius: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        /* Style the front side (fallback if image is missing) */
+        .flip-card-front {
+            background-color: white;
+            color: black;
+            border: 1px solid #e5e7eb;
+        }
+
+        .flip-card-front h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1e40af;
+            line-height: 1.2;
+        }
+
+        /* Style the back side */
+        .flip-card-back {
+            background-color: #ff6b00;
+            color: white;
+            transform: rotateY(180deg);
+            text-align: left;
+            align-items: flex-start;
+        }
+
+        .flip-card-back h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .flip-card-back p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .navigation {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            padding: 0.5rem 1rem;
+            border: 1px solid #e5e7eb;
+            background: white;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.2s;
+        }
+
+        .nav-btn:hover {
+            background: #f3f4f6;
+            transform: translateY(-2px);
+        }
+        
+        .back-link {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 0.9rem;
+            z-index: 100;
+        }
+        
+        .instruction {
+            margin-bottom: 2rem;
+            color: #9ca3af;
+            font-weight: 300;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .watermark {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            letter-spacing: -1px;
+            color: #ff6b00;
+            opacity: 0.5;
+            z-index: 1000;
+            pointer-events: none;
+            user-select: none;
+        }
+        
+        .watermark span {
+            color: #ffb74d; /* Lighter peach/orange for the & */
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); /* Darker for better contrast */
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-content {
+            background-color: #f9fafb;
+            padding: 2rem;
+            border-radius: 1.5rem;
+            max-width: 1000px; /* Wider for dashboard feel */
+            width: 95%;
+            max-height: 90vh;
+            overflow-y: auto; /* Scrollable if needed */
+            position: relative;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(20px); scale: 0.95; }
+            to { opacity: 1; transform: translateY(0); scale: 1; }
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f3f4f6;
+            transition: transform 0.2s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        .stat-count {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            margin-top: 0.5rem;
+        }
+
+        /* Chart/Cloud Section */
+        .cloud-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            color: #1f2937;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem;
+        }
+
+        .tag {
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 999px;
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+            color: #4b5563;
+            transition: all 0.3s;
+            cursor: default;
+        }
+        
+        .tag:hover {
+            background-color: #eff6ff;
+            border-color: #bfdbfe;
+            color: #1d4ed8;
+            transform: scale(1.05);
+        }
+
+        /* Tag sizes/weights simulation */
+        .tag-xl { font-size: 1.5rem; font-weight: 700; color: #1e40af; opacity: 1; }
+        .tag-lg { font-size: 1.25rem; font-weight: 600; color: #2563eb; opacity: 0.9; }
+        .tag-md { font-size: 1rem; font-weight: 500; color: #374151; opacity: 0.8; }
+        .tag-sm { font-size: 0.875rem; font-weight: 400; color: #6b7280; opacity: 0.7; }
+        
+        .stat-card.highlight {
+            border: 2px solid #2563eb;
+            background-color: #eff6ff;
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.2);
+        }
+        
+        .tag.tag-highlight {
+             background-color: #dbeafe;
+             border-color: #3b82f6;
+             color: #1e40af;
+        }
+
+
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #6b7280;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: #1f2937;
+        }
+
+        /* Modal content typography from 2.1 */
+        .modal-content h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .modal-content p {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #4b5563;
+        }
+
+    </style>
+</head>
+<body>
+
+
+
+    <a href="presentations.html" class="back-link" aria-label="Voltar para Apresentações">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+    </a>
+
+    <div class="slide-container">
+        <div class="instruction">2025, foi com emoção.</div>
+
+        <div class="cards-wrapper">
+            <!-- Card 1 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front" style="background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url('img/praia-distante.png') no-repeat center center / cover;">
+                        <h2>Muito esforço, praia distante</h2>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Crédito Garantido</h3>
+                        <p>Integrações, desenvolvimento, funcionou mas não foi.</p>
+                       <ul style="margin-top: 1rem; margin-left: 1.2rem;">
+                            <li>Out/2024 - Mai/2025</li>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front" style="background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url('img/esforco-fe.png') no-repeat center center / cover;">
+                        <h2>Esforço e fé (e um pouco de sorte)</h2>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Pix Automático </h3>
+                        <p>Contra tudo e contra todos, foi.</p>
+                        <ul style="margin-top: 1rem; margin-left: 1.2rem;">
+                             <li>Mai/2025 - Jun/2025(entrega) - Ago/2025</li>
+                            <li>Timing perfeito</li>
+                            <li>Execução resiliente</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+              <!-- Card 4 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front" style="background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url('img/normandia.png') no-repeat center center / cover;">
+                        <h2>D</h2>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Baixas</h3>
+                        <ul style="margin-top: 1rem; margin-left: 1.2rem;">
+                            <li>2 - PO</li>
+                            <li>1 - DESENVOLVEDOR</li>
+                            <li>1 - SM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="flip-card" onclick="this.classList.toggle('flipped')">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front" style="background: linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), url('img/nascido-caos.png') no-repeat center center / cover;">
+                        <h2>Nascido do caos</h2>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Portal Cross Banco</h3>
+                        <p>O Tiro certo</p>
+                        <ul style="margin-top: 1rem; margin-left: 1.2rem;">
+                             <li>Procedimentos Documentados</li>
+                             <li>Eficiência com time enxuto</li>
+                             <li>Menor tempo de atendimento</li>
+                             <li><a href="#" onclick="openModal(event)" style="color: inherit; text-decoration: underline; cursor: pointer;"><strong>Métricas</strong></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+          
+        </div>
+
+        <div class="navigation">
+            <a href="2026-pagina-1.html" class="nav-btn">← Anterior</a>
+            <a href="2026-pagina-3.html" class="nav-btn">Próximo →</a>
+        </div>
+    </div>
+
+    <div class="watermark">omni<span>&</span>co</div>
+
+    <!-- Modal -->
+    <div id="metricsModal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeModal(event)">×</button>
+            
+            <h1>Estatísticas de Chamados de 2025</h1>
+            
+            <!-- Stats Grid -->
+            <div class="stat-grid">
+                <div class="stat-card highlight">
+                    <div class="stat-value">37.7%</div>
+                    <div class="stat-label">Transações PIX</div>
+                    <div class="stat-count">23 chamados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">32.8%</div>
+                    <div class="stat-label">Outros</div>
+                    <div class="stat-count">20 chamados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">24.6%</div>
+                    <div class="stat-label">Erros no App</div>
+                    <div class="stat-count">15 chamados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">4.9%</div>
+                    <div class="stat-label">Boletos</div>
+                    <div class="stat-count">3 chamados</div>
+                </div>
+            </div>
+
+            <div class="cloud-section">
+                <div class="tag-cloud">
+                    <!-- PIX related (High frequency) -->
+                    <span class="tag tag-xl tag-highlight">Pix não realizado</span>
+                    <span class="tag tag-lg tag-highlight">Erro envio Pix</span>
+                    <span class="tag tag-xl tag-highlight">Pix não chega</span>
+                    <span class="tag tag-md tag-highlight">Pix 422</span>
+                    <span class="tag tag-sm tag-highlight">Pix bloqueado</span>
+                    <span class="tag tag-md tag-highlight">Pix cancelado</span>
+                    <span class="tag tag-lg tag-highlight">Chave Pix</span>
+                    <span class="tag tag-md tag-highlight">Horário Pix</span>
+                    
+                    <!-- App related -->
+                    <span class="tag tag-lg">Token não chega</span>
+                    <span class="tag tag-md">Erro 400</span>
+                    <span class="tag tag-lg">App Produção</span>
+                    <span class="tag tag-md">Erro acesso IB</span>
+                    <span class="tag tag-sm">Bug autorização</span>
+                    <span class="tag tag-md">Conta Corrente</span>
+                    <span class="tag tag-sm">Transferência</span>
+                    <span class="tag tag-lg">Erro no App</span>
+                    
+                    <!-- Boletos -->
+                    <span class="tag tag-md">Pagamento de Boletos</span>
+                    
+                    <!-- Outros -->
+                    <span class="tag tag-lg">Extrato divergente</span>
+                    <span class="tag tag-md">Transação não processada</span>
+                    <span class="tag tag-sm">Omnifácil</span>
+                    <span class="tag tag-lg">Dinheiro não aparece</span>
+                    <span class="tag tag-md">Código Segurança</span>
+                    <span class="tag tag-sm">Habilitar IP</span>
+                    <span class="tag tag-md">Saldo Subconta</span>
+                    <span class="tag tag-sm">Alteração limite</span>
+                    <span class="tag tag-lg">Cartão de Crédito Omni</span>
+                    <span class="tag tag-sm">Visualizar contas</span>
+                    <span class="tag tag-md">Recebimento TED</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 2rem; text-align: right; color: #9ca3af; font-size: 0.8rem; font-style: italic;">
+                Fonte: Jira
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function openModal(e) {
+            e.preventDefault();
+            document.getElementById('metricsModal').style.display = 'flex';
+        }
+
+        function closeModal(e) {
+            document.getElementById('metricsModal').style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>
